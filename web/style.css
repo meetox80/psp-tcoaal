@@ -1,0 +1,296 @@
+:root {
+  --bg: #161211;
+  --card: #221c1a;
+  --line: #3a312d;
+  --fg: #efe7e1;
+  --dim: #a59a91;
+  --accent: #d0b088;
+  --accent-ink: #1d1714;
+  --pink: #e8a0b4;
+  --ok: #9dd762;
+  --bad: #f6a18b;
+  --radius: 12px;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 16px 64px;
+}
+
+h1 {
+  font-size: 1.9rem;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  color: var(--accent);
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.num {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+  .num {
+    display: inline-block;
+    text-align: center;
+    padding-top: calc((26px - 1cap) / 2);
+    text-box: trim-both cap alphabetic;
+  }
+}
+
+.lead {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+.note,
+.hint {
+  color: var(--dim);
+  font-size: 0.92rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+code {
+  background: #2d2522;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.drop {
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 28px 16px;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.drop.over {
+  border-color: var(--accent);
+  background: #2a221f;
+}
+
+.drop-title {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+}
+
+.drop-sub {
+  color: var(--dim);
+  font-size: 0.9rem;
+  margin: 0 0 16px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+#game-ready .row,
+#step-done .row {
+  justify-content: flex-start;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid var(--line);
+  background: #2d2522;
+  color: var(--fg);
+  border-radius: 9px;
+  padding: 9px 16px;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.button.subtle {
+  background: transparent;
+}
+
+.button.big {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 1.05rem;
+}
+
+.button.wide {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.ok-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ok);
+  flex: none;
+}
+
+.status {
+  margin-top: 14px;
+}
+
+.bar {
+  height: 8px;
+  background: #2d2522;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bar > div {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.2s;
+}
+
+.status p {
+  color: var(--dim);
+  font-size: 0.92rem;
+  margin: 8px 0 0;
+}
+
+.error {
+  color: var(--bad);
+  margin: 12px 0 0;
+}
+
+details {
+  margin-top: 12px;
+}
+
+summary {
+  color: var(--dim);
+  cursor: pointer;
+}
+
+pre {
+  background: #1a1513;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 240px;
+  overflow: auto;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+}
+
+.steps {
+  padding-left: 22px;
+}
+
+.steps li {
+  margin: 6px 0;
+}
+
+footer {
+  margin-top: 32px;
+  color: var(--dim);
+  font-size: 0.85rem;
+}
+
+dialog {
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  max-width: 480px;
+  width: calc(100% - 32px);
+  padding: 22px;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+dialog .row {
+  justify-content: flex-start;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 24px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}

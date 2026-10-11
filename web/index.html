@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffin of Andy and Leyley for PSP</title>
+<meta name="description" content="Build a PSP version of The Coffin of Andy and Leyley from your own copy, right in your browser.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>The Coffin of Andy and Leyley for PSP</h1>
+    <p class="lead">Turn your copy of the game into a single <code>EBOOT.PBP</code> for a PSP or PPSSPP. Everything happens on this page: your game files never leave your computer.</p>
+    <p class="note">You need the game (version 3.0.12). It's on <a href="https://store.steampowered.com/app/2378900/" target="_blank" rel="noopener">Steam</a>. And a PSP-2000, 3000 or Go with custom firmware, or the PPSSPP emulator.</p>
+  </header>
+
+  <section class="card" id="step-game">
+    <h2><span class="num">1</span> Your game</h2>
+    <div id="game-empty">
+      <div id="drop" class="drop" tabindex="0">
+        <p class="drop-title">Drop your game folder or a .zip here</p>
+        <p class="drop-sub">The folder that has <code>Game.exe</code> and <code>www</code> in it. On Steam: right-click the game, then Manage, then Browse local files.</p>
+        <div class="row">
+          <label class="button primary">Choose folder<input id="pick-folder" type="file" webkitdirectory directory multiple hidden></label>
+          <label class="button">Choose .zip<input id="pick-zip" type="file" accept=".zip,application/zip" hidden></label>
+        </div>
+      </div>
+    </div>
+    <div id="game-ready" hidden>
+      <p class="ok-line"><span class="dot"></span><span id="game-summary"></span></p>
+      <p class="hint">Saved in this browser, so you won't have to pick it again next time.</p>
+      <div class="row">
+        <button id="replace-game" class="button">Use a different copy</button>
+        <button id="remove-game" class="button subtle">Remove from this browser</button>
+      </div>
+    </div>
+    <div id="import-status" class="status" hidden>
+      <div class="bar"><div id="import-bar"></div></div>
+      <p id="import-text"></p>
+    </div>
+    <p id="game-error" class="error" hidden></p>
+  </section>
+
+  <section class="card" id="step-build">
+    <h2><span class="num">2</span> Build</h2>
+    <label id="voices-option" class="check" hidden><input id="voices" type="checkbox" checked> Voice acting (fan dub by Aster and Fenrir, adds about 55 MB)</label>
+    <button id="build" class="button primary big" disabled>Build EBOOT.PBP</button>
+    <div id="build-status" class="status" hidden>
+      <div class="bar"><div id="build-bar"></div></div>
+      <p id="build-text"></p>
+    </div>
+    <details id="log-box" hidden><summary>Details</summary><pre id="log"></pre></details>
+    <p id="build-error" class="error" hidden></p>
+  </section>
+
+  <section class="card" id="step-done" hidden>
+    <h2><span class="num">3</span> Put it on your PSP</h2>
+    <div class="row">
+      <button id="download-zip" class="button primary">Download PSP folder (.zip)</button>
+      <button id="download-eboot" class="button">Download EBOOT.PBP only</button>
+    </div>
+    <ol class="steps">
+      <li>Unzip it into the root of your memory stick, so you end up with <code>PSP/GAME/TCOAAL/EBOOT.PBP</code>.</li>
+      <li>On the PSP, open Game, then Memory Stick. In PPSSPP, open the EBOOT directly.</li>
+      <li>Saves go into <code>PSP/GAME/TCOAAL/saves</code> and are kept when you update.</li>
+    </ol>
+    <p class="hint">Controls: d-pad to move, cross to interact, circle to cancel, triangle for the menu, square to run, R to fast-forward dialogue.</p>
+  </section>
+
+  <footer>
+    <p>An unofficial, non-commercial fan port with an engine written from scratch. The Coffin of Andy and Leyley is made by Nemlei and published by Kit9 Studio; this project is not affiliated with them. No game files are hosted here; the page only reads the copy you give it.</p>
+  </footer>
+</main>
+
+<dialog id="crack">
+  <h2>Please buy the game</h2>
+  <p>This copy of The Coffin of Andy and Leyley looks cracked.</p>
+  <p class="hint" id="crack-reason"></p>
+  <p>You need to buy the game to use this port. Kit9 Studio and Nemlei made it, and buying it on Steam is what lets them keep making games.</p>
+  <div class="row">
+    <a class="button primary" href="https://store.steampowered.com/app/2378900/" target="_blank" rel="noopener" id="crack-buy">Buy on Steam</a>
+    <button class="button" id="crack-quit">Quit</button>
+  </div>
+  <button class="button subtle wide" id="crack-continue" disabled></button>
+</dialog>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
